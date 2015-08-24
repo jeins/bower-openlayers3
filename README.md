@@ -11,6 +11,6 @@ It is the unofficial bower package for OpenLayers 3.
 ## Steps to upgrade
 * Clone and overwrite with new dist files
 * Increment version number in bower.json
-* `git commit -am "Release version 3.7.0"`
-* `git tag -a 3.7.0 -m "v3.7.0"`
+* `git commit -am "Release version 3.x.x"`
+* `git tag -a 3.x.x -m "v3.x.x"`
 * `git push origin master --tags`
