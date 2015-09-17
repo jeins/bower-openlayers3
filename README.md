@@ -1,12 +1,16 @@
 ol3-bower
 ================
 
-Bower for Open Layers 3
+Bower for [Open Layers 3](http://openlayers.org)
 
-It is the unofficial bower package for OpenLayers 3.
+This is the unofficial bower package for OpenLayers 3.
 
 ## Installation
 `bower install ol3-bower (--save)`
+
+Do you want to install a specific ol3 version?
+
+`bower install ol3-bower#3.4.0`
 
 ## Steps to upgrade
 * Clone and overwrite with new dist files
