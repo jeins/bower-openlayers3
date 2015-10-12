@@ -1,6 +1,6 @@
 // OpenLayers 3. See http://openlayers.org/
 // License: https://raw.githubusercontent.com/openlayers/ol3/master/LICENSE.md
-// Version: v3.10.0
+// Version: v3.10.1
 
 (function (root, factory) {
   if (typeof exports === "object") {
@@ -60668,10 +60668,8 @@ goog.inherits(ol.render.canvas.TextReplay, ol.render.canvas.Replay);
  */
 ol.render.canvas.TextReplay.prototype.drawText =
     function(flatCoordinates, offset, end, stride, geometry, feature) {
-  if (this.text_ === '' ||
-      !this.textState_ ||
-      (this.textFillState_ &&
-       !this.textStrokeState_)) {
+  if (this.text_ === '' || !this.textState_ ||
+      (!this.textFillState_ && !this.textStrokeState_)) {
     return;
   }
   if (this.textFillState_) {
