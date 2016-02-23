@@ -1,7 +1,7 @@
 ol3-bower
 ================
 
-Bower for [Open Layers 3](http://openlayers.org)
+Bower for [OpenLayers 3](http://openlayers.org)
 
 This is the unofficial bower package for OpenLayers 3.
 
