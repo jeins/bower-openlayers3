@@ -1,6 +1,6 @@
 {
   "name": "ol3",
-  "version": "3.14.0",
+  "version": "3.15.0",
   "description": "OpenLayers 3",
   "main": [
     "ol.js",
