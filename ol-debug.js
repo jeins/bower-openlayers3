@@ -1,6 +1,6 @@
 // OpenLayers 3. See http://openlayers.org/
 // License: https://raw.githubusercontent.com/openlayers/ol3/master/LICENSE.md
-// Version: v3.17.0
+// Version: v3.17.1
 
 (function (root, factory) {
   if (typeof exports === "object") {
@@ -25412,9 +25412,9 @@ ol.control.FullScreen.prototype.handleFullScreenChange_ = function() {
 ol.control.FullScreen.prototype.setMap = function(map) {
   ol.control.Control.prototype.setMap.call(this, map);
   if (map) {
-    this.listenerKeys.push(
-        ol.events.listen(ol.global.document, ol.control.FullScreen.CHANGETYPE,
-          this.handleFullScreenChange_, this)
+    this.listenerKeys.push(ol.events.listen(ol.global.document,
+        ol.control.FullScreen.getChangeType_(),
+        this.handleFullScreenChange_, this)
     );
   }
 };
@@ -25488,20 +25488,26 @@ ol.control.FullScreen.exitFullScreen = function() {
 };
 
 /**
- * @type {string}
+ * @return {string} Change type.
+ * @private
  */
-ol.control.FullScreen.CHANGETYPE = (function() {
-  var body = document.body;
-  if (body.webkitRequestFullscreen) {
-    return 'webkitfullscreenchange';
-  } else if (body.mozRequestFullScreen) {
-    return 'mozfullscreenchange';
-  } else if (body.msRequestFullscreen) {
-    return 'MSFullscreenChange';
-  } else if (body.requestFullscreen) {
-    return 'fullscreenchange';
-  }
-  return undefined;
+ol.control.FullScreen.getChangeType_ = (function() {
+  var changeType;
+  return function() {
+    if (!changeType) {
+      var body = document.body;
+      if (body.webkitRequestFullscreen) {
+        changeType = 'webkitfullscreenchange';
+      } else if (body.mozRequestFullScreen) {
+        changeType = 'mozfullscreenchange';
+      } else if (body.msRequestFullscreen) {
+        changeType = 'MSFullscreenChange';
+      } else if (body.requestFullscreen) {
+        changeType = 'fullscreenchange';
+      }
+    }
+    return changeType;
+  };
 })();
 
 // FIXME should listen on appropriate pane, once it is defined
